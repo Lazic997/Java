@@ -117,7 +117,7 @@ public class Matrica {
         }
     }
 
-    public void izbornik(int[][] matrica, int[]vektor){
+    public void izbornik(int[][] matrica, int[] vektor){
 
         boolean izbornik = true;
         while(izbornik){
