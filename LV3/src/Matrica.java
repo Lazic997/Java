@@ -1,127 +1,129 @@
-
 import java.util.Scanner;
-import java.util.Random;
-
 
 public class Matrica {
-
+    
     Scanner input = new Scanner(System.in);
-    Random random = new Random();
     int m,n,i,j;
-
-    public int[][] izradiMatricu(){
+    
+    public int[][] izradiMatricu(){ //metoda koja ce kreirati 2d matricu
         
         int[][] matrica = new int[5][5];
-        System.out.println("\nUnesite velicinu kvadratne matrice (m 1-5)");
+        System.out.println("\nUnesite velicinu kvadratne matrice (1-5)");
         
-
         do{
-
-            m=input.nextInt();
-
+            
+            try{
+                
+                m=input.nextInt();
+                
+            }catch(Exception greskaM){
+               System.out.println("\nDogodila se pogreska kod matrice!");
+            }
             if(m<1||m>5)
-                System.out.println("\nPogresno unesena vrijednost, unesite ponovno!");
-               
+                System.out.println("\nPogresno unesena vrijednost, unesite ponovno! (1-5)");
+            
+            
         }while(m<1||m>5);
-
         
-        System.out.println("\nUnos elemenata matrice.");
-        System.out.println("\nMatrica:\n");
-
-        for(i = 0; i<m ; i++){ //unos elemenata u 2d matricu i ispis matrice
-            for(j = 0; j<m ; j++){
-
-                    matrica[i][j]=random.nextInt(10);
-                    System.out.print(matrica[i][j] + " ");
-
-                }
-            System.out.println("\r");
+        System.out.println("\nUnos elemenata u matricu.");
+        System.out.println("\nMatrica: \n");
+        
+        for(i=0;i<m;i++){ //unos elemenata u 2d matricu i ispis matrice
+            for(j=0;j<m;j++){
+                
+                matrica[i][j]=(int)(Math.random()*10);
+                System.out.print(matrica[i][j] + " ");
+                
+            }
+           System.out.println();
         }
         
         return matrica;
     }
-
-    public int[] izradiVektor (){
-
-        int[] vektor = new int[10];
-        System.out.println("\nUnesite velicinu vektora (n 2-10)");
-        do{
-
-            n=input.nextInt();
-
-            if(n<2||n>10)
-                System.out.println("\nPogresno unesena vrijednost, unesite ponovno!");
-               
-        }while(n<2||n>10);
-
+    
+    public int[] izradiVektor(){ //metoda koja ce izraditi 1d polje
         
-        System.out.println("\nUnos elemenata vektora:");
-
-        for(i = 0; i<n ; i++){
-           
+        int[] vektor = new int[10];
+        System.out.println("\nUnesite velicinu vektora (2-10)");
+        
+        do{
+            
+            try{
+                
+                n=input.nextInt();
+                
+            }catch(Exception greskaV){
+                System.out.println("\nDogodila se pogreska kod vektora!");
+            }
+            
+            if(n<2||n>10)
+                System.out.println("\nPogresno unesena velicina, unesite ponovno! (2-10)");
+                
+        }while(n<2||n>10);
+        
+        System.out.println("\nUnesite elemente vektora: ");
+        
+        for(i=0;i<n;i++) //unos elemenata u vektor
             vektor[i]=input.nextInt();
-        }
-
+        
         return vektor;
     }
-
-    public void arts(int[][] matrica){ //metoda koja racuna aritmeticku sredine sporedne dijagonale 2d matrice
-
+    
+    public void arts(int[][] matrica){ //metoda koja racuna aritmeticku sredinu sporedne dijagonale 2d matrice
+        
         double suma=0;
         int pBr=0;
-
-        for(i=0;i<m;i++){ //trazim elemente sporedne dijagonale 2d matrice i zbrajam ih u sumu
+        
+        for(i=0;i<m;i++){ 
             for(j=0;j<m;j++){
-                if((i+j)==(m-1)){
-                suma += matrica[i][j];
-                pBr++;
+                if((i+j)==(m-1)){ //trazim elemente sporedne dijagonale 2d matrice i zbrajam ih u sumu
+                    suma += matrica[i][j];
+                    pBr++;
                 }
             }
         }
-
+        
         suma /= pBr;
         System.out.println("\nAritmeticka sredina sporedne dijagonale matrice je: " + suma);
+        
     }
-
-    public void sumaNeparnihBr(int[][] matrica){ //metoda koja zbraja neparne elemente 1. stupca i 1. retka 2d matrice
-
+    
+    public void sumaNeparnihBr(int[][] matrica){ //metoda koja zbraja neparne elemente 1.stupca i 1. retka 2d matrice
+        
         int suma=0;
-        boolean pVr=false; //uvodim pomocnu varijablu kao proveru da li postoje neparni brojevi
-
+        boolean pVr=false;
+        
         for(i=0;i<m;i++){
             for(j=0;j<m;j++){
-                if(i==0||j==0){ //trazim elemente prvog retka(nultog) i prvog stupca 2d matrice
-                    if(matrica[i][j] % 2 != 0){ //provera ako je element na i/j adresi neparan
+                if(i==0||j==0){
+                    if(matrica[i][j] % 2 != 0){
                         suma += matrica[i][j];
-                        pVr=true;//ako postoji barem jedan neparan broj u matrici varijabla ce biti true
+                        pVr=true; //ukoliko postoji barem jedan neparni broj u 1. retku ili 1. stupcu matrice pVr ce biti true
                     }
                 }
             }
         }
-
+        
         if(pVr)
-            System.out.println("\nSuma neparnih elemenata 1. stupca i 1. retka 2D matrice je: " + suma);
+            System.out.println("\nSuma neparnih brojeva 1. retka i 1. stupca matrice je: " + suma);
         else
-            System.out.println("\nNe postoji neparni element u 1. stupcu i 1. retku 2D matrice.");
-
+            System.out.println("\nNe postoji neparan broj u 1. retku ili 1. stupcu matrice!");
     }
-
-    public void ispisElemenataVektora(int[] vektor){
-
-        System.out.println("\nElementi vektora na parnim indeksima:\n");
-
+    
+    public void ispisParnihBr(int[] vektor){ //metoda koja ispisuje elemente vektora na parnim indeksima
+        
         for(i=0;i<n;i++){
-            if(i%2==0){
-                System.out.println(vektor[i]+" ");
-            }
+            if(i%2==0)
+                System.out.print(vektor[i] + " ");
         }
     }
-
+    
     public void izbornik(int[][] matrica, int[] vektor){
-
-        boolean izbornik = true;
-        while(izbornik){
-
+        
+        int izbornik=0;
+        
+        do{
+            
             System.out.println("\n\t-------------------------------------------------------------------------------------"
                              + "\n\n\t01. IZRACUNAJ ARITMETICKU SREDINU SPOREDNE DIJAGONALE MATRICE"
                              + "\n\n\t02. IZRACUNAJ SUMU NEPARNIH ELEMENATA PRVOG RETKA I PRVOG STUPCA MATRICE"
@@ -129,8 +131,8 @@ public class Matrica {
                              + "\n\n\tEXIT -> PRITISNITE BILO KOJU TIPKU ZA IZLAZ IZ PROGRAMA"
                              + "\n\t-------------------------------------------------------------------------------------");
             
-            int izbornik2=input.nextInt();
-            switch(izbornik2){
+            izbornik=input.nextInt();
+            switch(izbornik){
                 case 1:
                     arts(matrica);
                     break;
@@ -138,18 +140,15 @@ public class Matrica {
                     sumaNeparnihBr(matrica);
                     break;
                 case 3:
-                    ispisElemenataVektora(vektor);
+                    ispisParnihBr(vektor);
                     break;
                 default:
                     System.out.println("\nZatvaranje programa!");
-                    izbornik=false;
+                    izbornik=4;
                     break;
             }
-        }
-
-       
+            
+        }while(izbornik!=4);
     }
-    
-    
     
 }
