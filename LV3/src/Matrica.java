@@ -63,8 +63,14 @@ public class Matrica {
         
         System.out.println("\nUnesite elemente vektora: ");
         
-        for(i=0;i<n;i++) //unos elemenata u vektor
-            vektor[i]=input.nextInt();
+        for(i=0;i<n;i++){ //unos elemenata u vektor
+            try{
+                vektor[i]=input.nextInt();
+            }catch(Exception greska){
+                System.out.println("\nDogodila se greska kod unosa elemenata u vektor!");
+            }
+        }
+		
         
         return vektor;
     }
