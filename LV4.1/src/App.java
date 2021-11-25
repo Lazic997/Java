@@ -64,7 +64,7 @@ public class App {
             }else if(index.isDirectory()){
                 if(index.getName().charAt(0) < 'a' && index.getName().charAt(0) <= 'n') { //ako je malo pocetno slovo a-n datoteke 
                     System.out.println("Direktorij: " + index.getName().substring(0,1).toUpperCase() + index.getName().substring(1)); //prepravljam u veliko pocetno slovo
-                }else if(index.getName().charAt(0) >= 'o' && index.getName().charAt(0) <= 'z'){ //ako je pocetno slovo o-z datoteke
+                }else if(index.getName().charAt(0) >= 'o' && index.getName().charAt(0) <= 'z' || index.getName().charAt(0) >= 'O' && index.getName().charAt(0) <= 'Z'){ //ako je pocetno slovo o-z datoteke
                     String zadnjeSlovoImena = index.getName().substring(index.getName().length()-1); //izvlacim zadnje slovo imena datoteke
                     if(zadnjeSlovoImena.charAt(0) >= 'a' && zadnjeSlovoImena.charAt(0) <= 'z') //ako je zadnje slovo imena datoteke malo slovo
                         System.out.println("Direktorij: " + index.getName().toUpperCase()); //citav naziv datoteke pretravam u velika slova
