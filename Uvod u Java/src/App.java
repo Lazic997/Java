@@ -5,10 +5,10 @@ public class App {
 
       //1
       System.out.println("1. zadatak \n");
-      System.out.println("       J     a    v     v   a      \n"
-                       + "       J    a a    v   v   a a     \n"
-                       + "    J  J   aaaaa    v v   aaaaaa   \n"
-                       + "     JJ   a    a     v   a     a   \n");
+      System.out.println("       J     a   v     v   a      \n"
+                       + "       J    a a   v   v   a a     \n"
+                       + "    J  J   aaaaa   v v   aaaaaa   \n"
+                       + "     JJ   a     a   v   a      a   \n");
 
 
       //2
