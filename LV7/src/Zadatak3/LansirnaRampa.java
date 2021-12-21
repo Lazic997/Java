@@ -2,7 +2,7 @@ package Zadatak3;
 
 public class LansirnaRampa {
     
-    public void lansiranje(){
+    public synchronized void lansiranje(){ //metoda je sinhroznizirana
         for(int i = 10 ; i > 0 ; i--){
             System.out.println(i);
             try{
