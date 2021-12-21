@@ -13,8 +13,13 @@ public class Raketa implements Runnable{
 
     @Override
     public void run(){
-            
-        rampa.lansiranje(); // metodu mozemo sihnronizirati i tako da ovu liniju koda stavimo u synchronized blok
+        
+        try{
+            rampa.lansiranje(); // metodu mozemo sihnronizirati i tako da ovu liniju koda stavimo u synchronized blok
+        }catch(Exception e){
+            System.out.println("Greska pri lansiranju!");
+        }
+       
         System.out.println(this.ime + " raketa je uspjesno lansirana!");
         
     }
