@@ -1,4 +1,4 @@
-package zadatak3;
+package Zadatak3;
 
 public class Raketa implements Runnable {
     
