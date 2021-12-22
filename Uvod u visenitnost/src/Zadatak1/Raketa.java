@@ -1,4 +1,4 @@
-package zadatak1;
+package Zadatak1;
 
 public class Raketa extends Thread {
     
